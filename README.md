@@ -1,8 +1,8 @@
-# UART
+# UART - SD
 ## Como usar esse repositório?
 ### Clonar
 ```sh
-$ git clone 'https://github.com/mluisass/UART'
+$ git clone 'https://github.com/mluisass/UART-SD'
 ```
 ### Pegar últimas alterações (pull)
 ```sh
