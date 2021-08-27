@@ -1,10 +1,8 @@
 module tx(botao, clock, reset, entrada, saida);
 
 input botao, clock, reset;
-input entrada;
-output reg saida;
-
-wire [7:0] entrada;
+input [7:0] entrada;
+output reg saida;//acho que isso tem que ser wire 
 
 parameter [2:0] espera_apertar = 0, armazena = 1, espera_soltar = 2, transmite = 3;
 
@@ -50,6 +48,7 @@ begin
                     begin
                         estado_atual<=espera_apertar;
                         pulsos<=0;
+                        saida<=1;
                     end
                 end    
         endcase
