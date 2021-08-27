@@ -32,10 +32,10 @@ always @(negedge clock)
                     aux[contador]<=serial;
                     if(contador==7)
                       begin
-						     estado<=Led;
-						     leds<=aux;
+			estado<=Led;
+			leds<=aux;
                        count<=0;
-					     end
+		      end
                     count<=0;
                 end
             end 
