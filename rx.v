@@ -7,7 +7,7 @@ output reg [6:0] segmentoE;
 output reg [6:0] segmentoD;
 
 parameter [2:0]espera_start_bite=0, armazenando=1, Led=2, limpa=3,carrega=4,mostra=5;
-
+integer  count=0;
 integer  contador=0;
 reg [7:0] aux;
 reg [3:0] data;
@@ -25,13 +25,19 @@ always @(negedge clock)
             end
         armazenando:
             begin
-                contador<=contador+1;
-                aux[contador]<=serial;
-                if(contador==7)
-                    begin
-						  estado<=Led;
-						  leds<=aux;
-						  end
+                count<=count+1;
+                if(count==1)
+                begin
+                    contador<=contador+1;
+                    aux[contador]<=serial;
+                    if(contador==7)
+                      begin
+						     estado<=Led;
+						     leds<=aux;
+                       count<=0;
+					     end
+                    count<=0;
+                end
             end 
         Led:
             begin 
@@ -70,7 +76,8 @@ always @(negedge clock)
                     begin      	//Hexadecimal 0
                     segmentoE <= 7'b0000001;
                     segmentoD <= 7'b0000001;
-    end                4'b0001 :
+                    end   
+                 4'b0001 :
                     begin    		//Hexadecimal 1
                     segmentoE <= 7'b0000001;
                     segmentoD <= 7'b1001111 ;
